@@ -1,0 +1,17 @@
+.profile__data {
+  margin: 0;
+  display: grid;
+  grid-template-areas:
+  "name ."
+  "name button"
+  "employment .";
+  max-width: 414px;
+  width: 100%;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 750px) {
+  .profile__data {
+    width: 80%;
+  }
+}

@@ -1,0 +1,15 @@
+.button_action_edit {
+  grid-area: button;
+  margin: 0;
+  background: url('../../../images/edit__button.svg') center center no-repeat;
+  width: 24px;
+  height: 24px;
+}
+
+@media screen and (max-width: 750px) {
+  .button_action_edit {
+    margin: 0 0 0 auto;
+    width: 32px;
+    height: 32px;
+  }
+}

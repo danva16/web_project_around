@@ -1,0 +1,12 @@
+.profile__useremployment {
+  margin: 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  grid-area: employment;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 385px;
+  width: 100%;
+}

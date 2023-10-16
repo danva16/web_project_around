@@ -1,0 +1,11 @@
+.button_action_trash {
+  background-color: blue;
+  width: 18px;
+  height: 19px;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  background: url('../../../images/trash__image.svg') center center no-repeat;
+  background-size: cover;
+  border: none;
+}

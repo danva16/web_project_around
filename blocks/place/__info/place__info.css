@@ -1,0 +1,11 @@
+.place__info {
+  margin: 0;
+  padding: 0 10px;
+  background-color: #ffffff;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0 0 15px 15px;
+}

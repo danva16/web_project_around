@@ -1,0 +1,15 @@
+input {
+  border: none;
+}
+
+.form__input {
+  margin: 0;
+  border-bottom: 1px solid #cccccc;
+  width: 100%;
+  height: 28px;
+}
+
+.form__input:focus {
+  box-shadow: 0 0 4px 2px #1877f2;
+  outline: none;
+}

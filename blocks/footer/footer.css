@@ -1,0 +1,11 @@
+.footer {
+  color: #0048ba;
+  margin: 20px 0 15px;
+  text-align-last: left;
+}
+
+@media screen and (max-width: 750px) {
+  .footer {
+    align-self: flex-start;
+  }
+}

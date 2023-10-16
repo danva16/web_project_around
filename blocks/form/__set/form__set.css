@@ -1,0 +1,25 @@
+.form__set {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  width: 430px;
+  height: 330px;
+  padding: 35px;
+  transition: opacity 1.5s ease, visibility 1.5s ease;
+}
+
+@media screen and (max-width: 750px) {
+  .form__set {
+    width: 250px;
+    height: 322px;
+  }
+}
