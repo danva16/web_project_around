@@ -1,14 +1,6 @@
-import { profileFormElement, imageFormElement, nameElement, employmentElement, nameInput,
- employmentInput, popupElement, submitImageForm } from "./index.js";
 
- const formElement = document.querySelector(".form");
- const buttonEdit = document.querySelector(".button_action_edit");
- const buttonAdd = document.querySelector(".button_action_add");
- const closeButtons = document.querySelectorAll(".button_action_close");
- const submitButtonProfile = document.querySelector('#submit-profile');
- const submitButtonImage = document.querySelector('#submit-image');
 
- buttonEdit.addEventListener("click", () => {
+buttonEdit.addEventListener("click", () => {
   formElement.classList.add("form_mode_active");
   profileFormElement.classList.add("form__set_mode_active");
   openformProfile();
