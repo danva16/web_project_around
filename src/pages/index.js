@@ -1,5 +1,10 @@
-import Card from "./Card.js";
-import
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import Popup from "../components/Popup.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+
 
 const profileFormValidator = new FormValidator(profileFormConfig, profileFormElement);
 profileFormValidator.enableValidation();
