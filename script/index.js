@@ -1,3 +1,5 @@
+import Card from "./Card.js";
+import
 
 const profileFormValidator = new FormValidator(profileFormConfig, profileFormElement);
 profileFormValidator.enableValidation();

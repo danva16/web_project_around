@@ -1,7 +1,4 @@
-import { initialCards } from "./index.js";
-import { closePopupOnEsc } from "./utils.js";
-
-export class Card {
+class Card {
   constructor({ name, link }, handleCardClick, templateSelector) {
     this._name = name;
     this._link = link;
@@ -51,3 +48,5 @@ export class Card {
     return this._element;
   }
 };
+
+export default Card;

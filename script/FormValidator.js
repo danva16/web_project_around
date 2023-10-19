@@ -1,4 +1,4 @@
-export class FormValidator {
+class FormValidator {
   constructor(config, formElement) {
     this._config = config;
     this._formElement = formElement;
@@ -61,4 +61,6 @@ export class FormValidator {
     this._setEventListeners();
     this._toggleButtonState();
   }
-}
+};
+
+export default FormValidator;

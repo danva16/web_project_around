@@ -1,5 +1,3 @@
-
-
 buttonEdit.addEventListener("click", () => {
   formElement.classList.add("form_mode_active");
   profileFormElement.classList.add("form__set_mode_active");
