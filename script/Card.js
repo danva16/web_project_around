@@ -2,10 +2,11 @@ import { initialCards } from "./index.js";
 import { closePopupOnEsc } from "./utils.js";
 
 export class Card {
-  constructor(data, templateSelector) {
-    this._name = data.name;
-    this._link = data.link;
+  constructor({ name, link }, handleCardClick, templateSelector) {
+    this._name = name;
+    this._link = link;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -14,7 +15,7 @@ export class Card {
   }
 
   _setEventListeners(cardElement) {
-    cardElement.querySelector(".place__image").addEventListener("click", () => {
+    /*cardElement.querySelector(".place__image").addEventListener("click", () => {
     const formElement = document.querySelector(".form");
     const popupElement = document.querySelector(".popup");
     formElement.classList.add("form_mode_active");
@@ -23,7 +24,7 @@ export class Card {
     popupElement.querySelector(".popup__image").setAttribute('alt', this._name);
     popupElement.querySelector(".popup__title").textContent = this._name;
     document.addEventListener("keydown", closePopupOnEsc);
-    })
+    })*/
 
     cardElement.querySelector(".button_action_like").addEventListener("click", (evt) => {
       evt.target.classList.toggle("button_action_like--active");

@@ -30,10 +30,10 @@ closeButtons.forEach(button => {
 submitButtonProfile.addEventListener("click", submitProfileForm);
 submitButtonImage.addEventListener("click", submitImageForm);
 
-function openformProfile() {
+/*function openformProfile() {
   nameInput.value = nameElement.textContent;
   employmentInput.value = employmentElement.textContent;
-}
+}*/
 
 export function closePopup() {
   formElement.classList.remove("form_mode_active");
