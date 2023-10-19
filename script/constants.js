@@ -58,3 +58,7 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
   }
 ];
+
+export { cardTemplateSelector, popupElement, placesElement, profileFormElement, imageFormElement, nameElement, employmentElement
+,nameInput, employmentInput, formElement, buttonEdit, buttonAdd, closeButtons, submitButtonProfile, submitButtonImage
+, profileFormConfig, imageFormConfig, initialCards };
