@@ -6,6 +6,7 @@ class Popup {
   open() {
     this._popup.classList.add("popup_mode_active");
     document.addEventListener("keydown", handleEscClose);
+    this.setEventListeners();
   }
 
   close() {

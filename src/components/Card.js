@@ -1,9 +1,9 @@
 import initialCards from "../utils/constants.js";
 
 class Card {
-  constructor({ name, link, handleCardClick }, templateSelector) {
-    this._name = name;
-    this._link = link;
+  constructor({ data, handleCardClick }, templateSelector) {
+    this._name = data.name;
+    this._link = data.link;
     this._handleCardClick = handleCardClick;
     this._templateSelector = templateSelector;
   }

@@ -20,20 +20,6 @@ closeButtons.forEach(button => {
 submitButtonProfile.addEventListener("click", submitProfileForm);
 submitButtonImage.addEventListener("click", submitImageForm);
 
-/*function openformProfile() {
-  nameInput.value = nameElement.textContent;
-  employmentInput.value = employmentElement.textContent;
-}*/
-
-export function closePopup() {
-  formElement.classList.remove("form_mode_active");
-  profileFormElement.classList.remove("form__set_mode_active");
-  imageFormElement.classList.remove("form__set_mode_active");
-  popupElement.classList.remove("popup_mode_active");
-  document.removeEventListener("keydown", submitFormOnEnter);
-  document.removeEventListener("keydown", closePopupOnEsc);
-}
-
 function submitProfileForm(evt) {
   evt.preventDefault();
 
