@@ -28,9 +28,9 @@ class PopupWithForm extends Popup {
       this._submitCallback(inputValues);
     });
 
-    this.popup.querySelector("button_action_close").addEventListener("click", () => {
+    /*this.popup.querySelector("button_action_close").addEventListener("click", () => {
       this.close();
-    });
+    });*/
   }
 
   close() {
