@@ -21,7 +21,7 @@ const profileFormConfig = {
   inactiveButtonClass: "button_action_create-inactive",
   inputErrorClass: "form__input_type-error",
   errorClass: "form__input-error_active"
-}
+};
 
 const imageFormConfig = {
   formSelector: ".form__set",
@@ -30,7 +30,12 @@ const imageFormConfig = {
   inactiveButtonClass: "button_action_create-inactive",
   inputErrorClass: "form__input_type-error",
   errorClass: "form__input-error_active"
-}
+};
+
+const newCardData = {
+  name: document.querySelector("#title-input").value,
+  link: document.querySelector("#image-input").value
+};
 
 const initialCards = [
   {
@@ -61,4 +66,4 @@ const initialCards = [
 
 export { cardTemplateSelector, popupElement, placesElement, profileFormElement, imageFormElement, nameElement, employmentElement
 ,nameInput, employmentInput, formElement, buttonEdit, buttonAdd, closeButtons, submitButtonProfile, submitButtonImage
-, profileFormConfig, imageFormConfig, initialCards };
+, profileFormConfig, imageFormConfig, initialCards, newCardData };

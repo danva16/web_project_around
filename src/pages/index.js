@@ -5,7 +5,6 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 
-
 const profileFormValidator = new FormValidator(profileFormConfig, profileFormElement);
 profileFormValidator.enableValidation();
 
@@ -20,11 +19,6 @@ initialCards.forEach(cardData => {
 
 export function submitImageForm(evt) {
   evt.preventDefault();
-
-  const newCardData = {
-    name: document.querySelector("#title-input").value,
-    link: document.querySelector("#image-input").value
-  };
 
   const newCard = new Card(newCardData, cardTemplateSelector);
   const newCardElement = newCard.generateCard();

@@ -1,3 +1,5 @@
+import initialCards from "../utils/constants.js";
+
 class Card {
   constructor({ name, link, handleCardClick }, templateSelector) {
     this._name = name;
@@ -12,17 +14,6 @@ class Card {
   }
 
   _setEventListeners(cardElement) {
-    /*cardElement.querySelector(".place__image").addEventListener("click", () => {
-    const formElement = document.querySelector(".form");
-    const popupElement = document.querySelector(".popup");
-    formElement.classList.add("form_mode_active");
-    popupElement.classList.add("popup_mode_active");
-    popupElement.querySelector(".popup__image").setAttribute('src', this._link);
-    popupElement.querySelector(".popup__image").setAttribute('alt', this._name);
-    popupElement.querySelector(".popup__title").textContent = this._name;
-    document.addEventListener("keydown", closePopupOnEsc);
-    })*/
-
     cardElement.querySelector(".button_action_like").addEventListener("click", (evt) => {
       evt.target.classList.toggle("button_action_like--active");
     })
