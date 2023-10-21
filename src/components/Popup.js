@@ -4,13 +4,13 @@ class Popup {
   }
 
   open() {
-    this._popup.classList.add("popup_mode_active");
+    this._popup.classList.add("form_mode_active");
     document.addEventListener("keydown", this._handleEscClose);
     this.setEventListeners();
   }
 
   close() {
-    this._popup.classList.remove("popup_mode_active");
+    this._popup.classList.remove("form_mode_active");
     document.removeEventListener("keydown", this._handleEscClose);
   }
 
