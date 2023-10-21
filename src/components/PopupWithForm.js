@@ -1,7 +1,7 @@
 import Popup from "./Popup.js";
 
 class PopupWithForm extends Popup {
-  constructor(popupSelector, submitCallback) {
+  constructor({ submitCallback }, popupSelector) {
     super(popupSelector);
     this._submitCallback = submitCallback;
     this.submitButton = this._popup.querySelector(".button_action_create");
@@ -26,10 +26,6 @@ class PopupWithForm extends Popup {
       const inputValues = this._getInputValues();
       this._submitCallback(inputValues);
     });
-
-    /*this.popup.querySelector("button_action_close").addEventListener("click", () => {
-      this.close();
-    });*/
   }
 
   close() {

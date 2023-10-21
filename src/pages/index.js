@@ -8,7 +8,7 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 
 //importacion de constantes
-import { cardTemplateSelector, initialCards, placesElement, popupElement } from "../utils/constants.js";
+import { cardTemplateSelector, initialCards, placesElement, popupElement, profileFormElement } from "../utils/constants.js";
 
 //creacion de instancias
 
@@ -31,11 +31,15 @@ const initialCardList = new Section({
 }
 , placesElement);
 
-initialCards.forEach(cardData => {
-  const card = new Card(cardData, cardTemplateSelector);
-  const cardElement = card.generateCard();
-  placesElement.prepend(cardElement);
-})
+const userInfo = new UserInfo({ nameSelector: ".profile__username", employemntSelector: ".profile__employment" });
+
+const popupWithUserInfo = new PopupWithForm({
+  submitCallback: (data) => {
+    userInfo.setUserInfo(data);
+  }
+}
+, profileFormElement
+);
 
 const profileFormValidator = new FormValidator(profileFormConfig, profileFormElement);
 profileFormValidator.enableValidation();
