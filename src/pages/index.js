@@ -8,8 +8,9 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 
 //importacion de constantes
-import { buttonAdd, buttonEdit, cardTemplateSelector, imageFormConfig, imageFormElement, initialCards, placesElement, popupElement,
-  profileFormConfig, profileFormElement, submitButtonImage, submitButtonProfile } from "../utils/constants.js";
+import { buttonAdd, buttonEdit, cardTemplateSelector, employmentElement, imageFormConfig, imageFormElement, initialCards,
+  nameElement, placesElement, popupElement, profileFormConfig, profileFormElement, submitButtonImage,
+  submitButtonProfile } from "../utils/constants.js";
 
 //creacion de instancias
 
@@ -32,7 +33,7 @@ const initialCardList = new Section({
 }
 , placesElement);
 
-const userInfo = new UserInfo({ nameSelector: ".profile__username", employemntSelector: ".profile__employment" });
+const userInfo = new UserInfo({ nameSelector: nameElement, employemntSelector: employmentElement });
 
 const popupWithUserInfo = new PopupWithForm({
   submitCallback: (data) => {

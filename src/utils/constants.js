@@ -5,12 +5,8 @@ const profileFormElement = document.querySelector("#profile");
 const imageFormElement = document.querySelector("#image");
 const nameElement = document.querySelector('.profile__username');
 const employmentElement = document.querySelector('.profile__useremployment');
-const nameInput = profileFormElement.querySelector('input[placeholder="Nombre"]');
-const employmentInput = profileFormElement.querySelector('input[placeholder="Acerca de mí"]');
-const formElement = document.querySelector(".form");
 const buttonEdit = document.querySelector(".button_action_edit");
 const buttonAdd = document.querySelector(".button_action_add");
-const closeButtons = document.querySelectorAll(".button_action_close");
 const submitButtonProfile = document.querySelector('#submit-profile');
 const submitButtonImage = document.querySelector('#submit-image');
 
@@ -30,11 +26,6 @@ const imageFormConfig = {
   inactiveButtonClass: "button_action_create-inactive",
   inputErrorClass: "form__input_type-error",
   errorClass: "form__input-error_active"
-};
-
-const newCardData = {
-  name: document.querySelector("#title-input").value,
-  link: document.querySelector("#image-input").value
 };
 
 const initialCards = [
@@ -65,5 +56,5 @@ const initialCards = [
 ];
 
 export { cardTemplateSelector, popupElement, placesElement, profileFormElement, imageFormElement, nameElement, employmentElement
-,nameInput, employmentInput, formElement, buttonEdit, buttonAdd, closeButtons, submitButtonProfile, submitButtonImage
-, profileFormConfig, imageFormConfig, initialCards, newCardData };
+, buttonEdit, buttonAdd, submitButtonProfile, submitButtonImage
+, profileFormConfig, imageFormConfig, initialCards };
