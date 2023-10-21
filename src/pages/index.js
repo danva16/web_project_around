@@ -8,8 +8,8 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 
 //importacion de constantes
-import { buttonAdd, buttonEdit, cardTemplateSelector, employmentElement, imageFormConfig, imageFormElement, initialCards,
-  nameElement, placesElement, popupElement, profileFormConfig, profileFormElement, submitButtonImage,
+import { buttonAdd, buttonEdit, cardTemplateSelector, imageFormConfig, imageFormElement, initialCards,
+  popupElement, profileFormConfig, profileFormElement, submitButtonImage,
   submitButtonProfile } from "../utils/constants.js";
 
 //creacion de instancias
@@ -31,16 +31,16 @@ const initialCardList = new Section({
     initialCardList.addItem(card);
   }
 }
-, placesElement);
+, ".places");
 
-const userInfo = new UserInfo({ nameSelector: nameElement, employemntSelector: employmentElement });
+const userInfo = new UserInfo({ nameSelector: ".profile__username", employemntSelector: ".profile__useremployment" });
 
 const popupWithUserInfo = new PopupWithForm({
   submitCallback: (data) => {
     userInfo.setUserInfo(data);
   }
 }
-, profileFormElement
+, "#profile"
 );
 
 const popupWithCardInfo = new PopupWithForm({
@@ -60,7 +60,7 @@ const popupWithCardInfo = new PopupWithForm({
     initialCardList.addItem(newCard);
   }
 }
-, imageFormElement
+, "#image"
 );
 
 const profileFormValidator = new FormValidator(profileFormConfig, profileFormElement);
@@ -69,14 +69,14 @@ const imageFormValidator = new FormValidator(imageFormConfig, imageFormElement);
 
 //controladores de eventos para abrir popups
 buttonEdit.addEventListener("click", () => {
-  const profilePopup = new Popup(profileFormElement);
+  const profilePopup = new Popup("#profile");
   profileFormValidator.enableValidation();
   userInfo.getUserInfo();
   profilePopup.open();
 });
 
 buttonAdd.addEventListener("click", () => {
-  const imagePopup = new Popup(imageFormElement);
+  const imagePopup = new Popup("#image");
   imageFormValidator.enableValidation();
   imagePopup.open();
 });

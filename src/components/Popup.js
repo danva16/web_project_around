@@ -5,13 +5,13 @@ class Popup {
 
   open() {
     this._popup.classList.add("popup_mode_active");
-    document.addEventListener("keydown", handleEscClose);
+    document.addEventListener("keydown", this._handleEscClose);
     this.setEventListeners();
   }
 
   close() {
     this._popup.classList.remove("popup_mode_active");
-    document.removeEventListener("keydown", handleEscClose);
+    document.removeEventListener("keydown", this._handleEscClose);
   }
 
   _handleEscClose(evt) {

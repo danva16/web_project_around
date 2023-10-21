@@ -1,4 +1,4 @@
-import initialCards from "../utils/constants.js";
+//import initialCards from "../utils/constants.js";
 
 class Card {
   constructor({ data, handleCardClick }, templateSelector) {
@@ -20,12 +20,12 @@ class Card {
 
     cardElement.querySelector(".button_action_trash").addEventListener("click", () => {
       cardElement.remove();
-      const index = initialCards.findIndex(card => !(card.name === this._name && card.link === this._link));
+      /*const index = initialCards.findIndex(card => !(card.name === this._name && card.link === this._link));
       if(index !== -1) {
         initialCards.splice(index, 1);
       }
-    })
-  }
+    })*/
+  })}
 
   generateCard() {
     this._element = this._getTemplate();

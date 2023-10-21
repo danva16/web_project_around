@@ -3,8 +3,8 @@ const popupElement = document.querySelector(".popup");
 const placesElement = document.querySelector(".places");
 const profileFormElement = document.querySelector("#profile");
 const imageFormElement = document.querySelector("#image");
-const nameElement = document.querySelector('.profile__username');
-const employmentElement = document.querySelector('.profile__useremployment');
+//const nameElement = document.querySelector('.profile__username');
+//const employmentElement = document.querySelector('.profile__useremployment');
 const buttonEdit = document.querySelector(".button_action_edit");
 const buttonAdd = document.querySelector(".button_action_add");
 const submitButtonProfile = document.querySelector('#submit-profile');
@@ -55,6 +55,6 @@ const initialCards = [
   }
 ];
 
-export { cardTemplateSelector, popupElement, placesElement, profileFormElement, imageFormElement, nameElement, employmentElement
+export { cardTemplateSelector, popupElement, placesElement, imageFormElement
 , buttonEdit, buttonAdd, submitButtonProfile, submitButtonImage
-, profileFormConfig, imageFormConfig, initialCards };
+, profileFormConfig, imageFormConfig, initialCards, profileFormElement };
