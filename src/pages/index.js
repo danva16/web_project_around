@@ -8,7 +8,7 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 
 //importacion de constantes
-import { cardTemplateSelector, initialCards, placesElement, popupElement, profileFormElement } from "../utils/constants.js";
+import { cardTemplateSelector, imageFormConfig, imageFormElement, initialCards, placesElement, popupElement, profileFormConfig, profileFormElement } from "../utils/constants.js";
 
 //creacion de instancias
 
@@ -39,6 +39,26 @@ const popupWithUserInfo = new PopupWithForm({
   }
 }
 , profileFormElement
+);
+
+const popupWithCardInfo = new PopupWithForm({
+  submitCallback: (data) => {
+    const newCardElement = new Card({
+      data
+      , handleCardClick: (evt) => {
+        if(evt.target.classList.contains("place__image")) {
+          const popupWithImage = new PopupWithImage(popupElement);
+          popupWithImage.open();
+        }
+      }
+    }
+    , cardTemplateSelector
+    );
+    const newCard = newCardElement.generateCard();
+    initialCardList.addItem(newCard);
+  }
+}
+, imageFormElement
 );
 
 const profileFormValidator = new FormValidator(profileFormConfig, profileFormElement);
