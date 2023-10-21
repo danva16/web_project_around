@@ -8,7 +8,8 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 
 //importacion de constantes
-import { cardTemplateSelector, imageFormConfig, imageFormElement, initialCards, placesElement, popupElement, profileFormConfig, profileFormElement } from "../utils/constants.js";
+import { buttonAdd, buttonEdit, cardTemplateSelector, imageFormConfig, imageFormElement, initialCards, placesElement, popupElement,
+  profileFormConfig, profileFormElement, submitButtonImage, submitButtonProfile } from "../utils/constants.js";
 
 //creacion de instancias
 
@@ -62,20 +63,30 @@ const popupWithCardInfo = new PopupWithForm({
 );
 
 const profileFormValidator = new FormValidator(profileFormConfig, profileFormElement);
-profileFormValidator.enableValidation();
 
 const imageFormValidator = new FormValidator(imageFormConfig, imageFormElement);
-imageFormValidator.enableValidation();
 
-export function submitImageForm(evt) {
-  evt.preventDefault();
+//controladores de eventos para abrir popups
+buttonEdit.addEventListener("click", () => {
+  const profilePopup = new Popup(profileFormElement);
+  profileFormValidator.enableValidation();
+  userInfo.getUserInfo();
+  profilePopup.open();
+});
 
-  const newCard = new Card(newCardData, cardTemplateSelector);
-  const newCardElement = newCard.generateCard();
-  placesElement.prepend(newCardElement);
+buttonAdd.addEventListener("click", () => {
+  const imagePopup = new Popup(imageFormElement);
+  imageFormValidator.enableValidation();
+  imagePopup.open();
+});
 
-  document.querySelector("#title-input").value = "";
-  document.querySelector("#image-input").value = "";
+//controladores para botones submit
+submitButtonProfile.addEventListener("click", () => {
+  popupWithUserInfo.setEventListeners();
+  popupWithUserInfo.close();
+});
 
-  closePopup();
-}
+submitButtonImage.addEventListener("click", () => {
+  popupWithCardInfo.setEventListeners();
+  popupWithCardInfo.close();
+});
