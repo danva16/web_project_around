@@ -13,17 +13,15 @@ import { buttonAdd, buttonEdit, cardTemplateSelector, imageFormConfig, imageForm
   submitButtonProfile } from "../utils/constants.js";
 
 //creacion de instancias
+const popupWithImage = new PopupWithImage(".popup");
 
 const initialCardList = new Section({
   items: initialCards,
   renderer: (item) => {
     const cardElement = new Card({
       data: item,
-      handleCardClick: (evt) => {
-        if(evt.target.classList.contains("place__image")) {
-          const popupWithImage = new PopupWithImage(popupElement);
-          popupWithImage.open();
-        }
+      handleCardClick: () => {
+        popupWithImage.open(item);
       }
     }
     , cardTemplateSelector);
@@ -33,7 +31,7 @@ const initialCardList = new Section({
 }
 , ".places");
 
-const userInfo = new UserInfo({ nameSelector: ".profile__username", employemntSelector: ".profile__useremployment" });
+const userInfo = new UserInfo({ nameSelector: ".profile__username", employmentSelector: ".profile__useremployment" });
 
 const popupWithUserInfo = new PopupWithForm({
   submitCallback: (data) => {
@@ -47,11 +45,9 @@ const popupWithCardInfo = new PopupWithForm({
   submitCallback: (data) => {
     const newCardElement = new Card({
       data
-      , handleCardClick: (evt) => {
-        if(evt.target.classList.contains("place__image")) {
-          const popupWithImage = new PopupWithImage(popupElement);
-          popupWithImage.open();
-        }
+      , handleCardClick: () => {
+          const popupWithImage = new PopupWithImage(".popup");
+          popupWithImage.open(data);
       }
     }
     , cardTemplateSelector
@@ -70,8 +66,9 @@ const imageFormValidator = new FormValidator(imageFormConfig, imageFormElement);
 //controladores de eventos para abrir popups
 buttonEdit.addEventListener("click", () => {
   const profilePopup = new Popup("#profile");
+  const currentUserInfo = userInfo.getUserInfo();
+  userInfo.setUserInfo(currentUserInfo);
   profileFormValidator.enableValidation();
-  userInfo.getUserInfo();
   profilePopup.open();
 });
 
@@ -91,3 +88,5 @@ submitButtonImage.addEventListener("click", () => {
   popupWithCardInfo.setEventListeners();
   popupWithCardInfo.close();
 });
+
+initialCardList.rendererItems();

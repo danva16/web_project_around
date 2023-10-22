@@ -28,6 +28,11 @@ class PopupWithForm extends Popup {
     });
   }
 
+  open() {
+    super.open();
+    this._popup.classList.add("form__set_mode_active");
+  }
+
   close() {
     super.close();
     this._popup.reset();

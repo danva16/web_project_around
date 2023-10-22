@@ -20,12 +20,11 @@ class Card {
 
     cardElement.querySelector(".button_action_trash").addEventListener("click", () => {
       cardElement.remove();
-      /*const index = initialCards.findIndex(card => !(card.name === this._name && card.link === this._link));
-      if(index !== -1) {
-        initialCards.splice(index, 1);
-      }
-    })*/
-  })}
+    })
+    cardElement.querySelector(".place__image").addEventListener("click", () => {
+      this._handleCardClick();
+    })
+  }
 
   generateCard() {
     this._element = this._getTemplate();
