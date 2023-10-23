@@ -1,5 +1,3 @@
-//import initialCards from "../utils/constants.js";
-
 class Card {
   constructor({ data, handleCardClick }, templateSelector) {
     this._name = data.name;

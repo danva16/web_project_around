@@ -9,6 +9,7 @@ import UserInfo from "../components/UserInfo.js";
 
 //importacion de constantes
 import { buttonAdd, buttonEdit, cardTemplateSelector, imageFormConfig, imageFormElement, initialCards,
+  placesElement,
   popupElement, profileFormConfig, profileFormElement, submitButtonImage,
   submitButtonProfile } from "../utils/constants.js";
 
@@ -33,20 +34,20 @@ const initialCardList = new Section({
 
 const userInfo = new UserInfo({ nameSelector: ".profile__username", employmentSelector: ".profile__useremployment" });
 
-const popupWithUserInfo = new PopupWithForm({
+/*const popupWithUserInfo = new PopupWithForm({
   submitCallback: (data) => {
     userInfo.setUserInfo(data);
   }
 }
 , "#profile"
-);
+);*/
 
-const popupWithCardInfo = new PopupWithForm({
+/*const popupWithCardInfo = new PopupWithForm({
   submitCallback: (data) => {
     const newCardElement = new Card({
       data
       , handleCardClick: () => {
-          const popupWithImage = new PopupWithImage(".popup");
+          const popupWithImage = new PopupWithImage(popupElement);
           popupWithImage.open(data);
       }
     }
@@ -57,7 +58,7 @@ const popupWithCardInfo = new PopupWithForm({
   }
 }
 , "#image"
-);
+);*/
 
 const profileFormValidator = new FormValidator(profileFormConfig, profileFormElement);
 
@@ -65,16 +66,11 @@ const imageFormValidator = new FormValidator(imageFormConfig, imageFormElement);
 
 //controladores de eventos para abrir popups
 buttonEdit.addEventListener("click", () => {
-  const popupWithUserInfo = new PopupWithForm({
-    submitCallback: (data) => {
-    }
-  }
-  , "#profile"
-  );
+  const popupWithUsersInfo = new Popup("#profile");
   const currentUserInfo = userInfo.getUserInfo();
   userInfo.setUserInfo(currentUserInfo);
   profileFormValidator.enableValidation();
-  popupWithUserInfo.open();
+  popupWithUsersInfo.open();
 });
 
 buttonAdd.addEventListener("click", () => {

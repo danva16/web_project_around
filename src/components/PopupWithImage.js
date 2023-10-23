@@ -9,16 +9,17 @@ class PopupWithImage extends Popup {
 
   open({ link, name}) {
     super.open();
-    this._popup.classList.add("popup_mode_active")
+    //this._popup.classList.add("popup_mode_active")
     this._image.src = link;
     this._title.textContent = name;
     this._image.alt = name;
-    this._setEventListeners();
+    //this._setEventListeners();
   }
 
   close() {
     super.close();
-    this._popup.classList.remove("popup_mode_active");
+    console.log(this._popup);
+    //this._popup.classList.remove("popup_mode_active");
   }
 
   _setEventListeners() {

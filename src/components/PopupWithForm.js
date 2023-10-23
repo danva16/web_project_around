@@ -25,8 +25,8 @@ class PopupWithForm extends Popup {
       this._submitCallback(inputValues);
     });
 
-    this._popup.querySelector(".button_action_close").addEventListener("click", () => {
-      this.close();
+    this._popup.querySelector(".button_action_close").addEventListener("click", (evt) => {
+      evt.preventDefault();
     });
   }
 
@@ -36,14 +36,14 @@ class PopupWithForm extends Popup {
     });
   }
 
-  open() {
+  /*open() {
     super.open();
-    this._popup.classList.add("form__set_mode_active");
-  }
+    //this._popup.classList.add("form__set_mode_active");
+  }*/
 
   close() {
     super.close();
-    this._popup.classList.remove("form__set_mode_active");
+    //this._popup.classList.remove("form__set_mode_active");
     this._reset();
   }
 }
