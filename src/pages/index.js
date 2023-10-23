@@ -65,11 +65,16 @@ const imageFormValidator = new FormValidator(imageFormConfig, imageFormElement);
 
 //controladores de eventos para abrir popups
 buttonEdit.addEventListener("click", () => {
-  const profilePopup = new Popup("#profile");
+  const popupWithUserInfo = new PopupWithForm({
+    submitCallback: (data) => {
+    }
+  }
+  , "#profile"
+  );
   const currentUserInfo = userInfo.getUserInfo();
   userInfo.setUserInfo(currentUserInfo);
   profileFormValidator.enableValidation();
-  profilePopup.open();
+  popupWithUserInfo.open();
 });
 
 buttonAdd.addEventListener("click", () => {

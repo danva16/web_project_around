@@ -6,15 +6,12 @@ class Popup {
 
   open() {
     this._form.classList.add("form_mode_active");
-    this._popup.classList.add("form__set_mode_active");
     //document.addEventListener("keydown", this._handleEscClose);
     this.setEventListeners();
   }
 
   close() {
     this._form.classList.remove("form_mode_active");
-    this._popup.classList.remove("form__set_mode_active");
-    //this._popup.classList.remove("form_mode_active");
     //document.removeEventListener("keydown", this._handleEscClose);
   }
 
@@ -25,11 +22,7 @@ class Popup {
   }
 
   setEventListeners() {
-    this._form.addEventListener("click", (evt) => {
-      if(evt.target.classList.contains("button_action_close") || !this._popup.contains(evt.target)) {
-        this.close();
-      }
-    })
+    this._popup.querySelector(".button_action_close").addEventListener("click", this.close)
   }
 }
 
