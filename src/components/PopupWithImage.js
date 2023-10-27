@@ -7,27 +7,17 @@ class PopupWithImage extends Popup {
     this._title = this._popup.querySelector(".popup__title");
   }
 
-  open({ link, name}) {
+  open({ title, link}) {
     super.open();
-    //this._popup.classList.add("popup_mode_active")
+    this._popup.classList.add("popup_mode_active");
     this._image.src = link;
-    this._title.textContent = name;
-    this._image.alt = name;
-    //this._setEventListeners();
+    this._title.textContent = title;
+    this._image.alt = link;
   }
 
   close() {
     super.close();
-    console.log(this._popup);
-    //this._popup.classList.remove("popup_mode_active");
-  }
-
-  _setEventListeners() {
-    this._popup.addEventListener("click", (evt) => {
-      if(evt.target.classList.contains("button_action_close") || !this._popup.contains(evt.target)) {
-        this.close();
-      }
-    })
+    this._popup.classList.remove("popup_mode_active");
   }
 }
 

@@ -1,6 +1,6 @@
 class Card {
   constructor({ data, handleCardClick }, templateSelector) {
-    this._name = data.name;
+    this._title = data.title;
     this._link = data.link;
     this._handleCardClick = handleCardClick;
     this._templateSelector = templateSelector;
@@ -27,9 +27,9 @@ class Card {
   generateCard() {
     this._element = this._getTemplate();
 
-    this._element.querySelector(".place__title").textContent = this._name;
+    this._element.querySelector(".place__title").textContent = this._title;
     this._element.querySelector(".place__image").setAttribute("src", this._link);
-    this._element.querySelector(".place__image").setAttribute("alt", this._name);
+    this._element.querySelector(".place__image").setAttribute("alt", this._title);
 
     this._setEventListeners(this._element);
 

@@ -1,50 +1,68 @@
+import { submitButtonProfile } from "../utils/constants.js";
 import Popup from "./Popup.js";
 
 class PopupWithForm extends Popup {
   constructor({ submitCallback }, popupSelector) {
     super(popupSelector);
     this._submitCallback = submitCallback;
-    this.submitButton = this._popup.querySelector(".button_action_create");
-    this._inputElements = this._popup.querySelectorAll(".form__input");
+    this._submitButton = this._popup.querySelector(".button_action_create");
+    this._handlerSubmit = this._handleSubmit.bind(this);
+    this._handlerSubmitOnEnter = this._hanldeSubmitOnEnter.bind(this);
   }
 
   _getInputValues() {
     const inputValues = {};
+    const inputElements = this._popup.querySelectorAll(".form__input");
 
-    this._inputElements.forEach(input => {
+    inputElements.forEach(input => {
       inputValues[input.name] = input.value;
     });
 
     return inputValues;
   }
 
-  setEventListeners() {
-    this._popup.addEventListener("submit", evt => {
-      evt.preventDefault();
-      const inputValues = this._getInputValues();
-      this._submitCallback(inputValues);
-    });
-
-    this._popup.querySelector(".button_action_close").addEventListener("click", (evt) => {
-      evt.preventDefault();
-    });
-  }
-
   _reset() {
-    this._inputElements.forEach(input => {
+    const inputElements = this._popup.querySelectorAll(".form__input");
+    inputElements.forEach(input => {
       input.value = "";
     });
   }
 
-  /*open() {
+  open() {
     super.open();
-    //this._popup.classList.add("form__set_mode_active");
-  }*/
+    this.setEventListeners();
+    this._popup.classList.add("form__set_mode_active");
+  }
 
   close() {
     super.close();
-    //this._popup.classList.remove("form__set_mode_active");
+    this._removeListeners();
+    this._popup.classList.remove("form__set_mode_active");
     this._reset();
+  }
+
+  _handleSubmit(evt) {
+    evt.preventDefault();
+    this._submitCallback();
+  }
+
+  _hanldeSubmitOnEnter(evt) {
+    if(evt.key === "Enter") {
+      evt.preventDefault();
+      console.log("Presionaste Enter");
+    }
+  }
+
+  setEventListeners() {
+    super.setEventListeners();
+    this._popup.addEventListener("submit", this._handlerSubmit);
+    document.addEventListener("keydown", this._handlerSubmitOnEnter);
+  }
+
+  _removeListeners() {
+    super._removeListeners();
+    this._popup.removeEventListener("submit", this._handlerSubmit);
+    document.removeEventListener("keydown", this._handlerSubmitOnEnter);
   }
 }
 

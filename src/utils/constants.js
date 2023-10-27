@@ -3,8 +3,10 @@ const popupElement = document.querySelector(".popup");
 const placesElement = document.querySelector(".places");
 const profileFormElement = document.querySelector("#profile");
 const imageFormElement = document.querySelector("#image");
-//const nameElement = document.querySelector('.profile__username');
-//const employmentElement = document.querySelector('.profile__useremployment');
+const nameElement = document.querySelector('.profile__username');
+const employmentElement = document.querySelector('.profile__useremployment');
+const nameInput = document.querySelector("#name-input");
+const employmentInput = document.querySelector("#employment-input");
 const buttonEdit = document.querySelector(".button_action_edit");
 const buttonAdd = document.querySelector(".button_action_add");
 const submitButtonProfile = document.querySelector('#submit-profile');
@@ -30,31 +32,31 @@ const imageFormConfig = {
 
 const initialCards = [
   {
-    name: "Valle de Yosemite",
+    title: "Valle de Yosemite",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
   },
   {
-    name: "Lago Louise",
+    title: "Lago Louise",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg"
   },
   {
-    name: "Montañas Calvas",
+    title: "Montañas Calvas",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg"
   },
   {
-    name: "Latemar",
+    title: "Latemar",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg"
   },
   {
-    name: "Parque Nacional de la Vanoise",
+    title: "Parque Nacional de la Vanoise",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg"
   },
   {
-    name: "Lago di Braies",
+    title: "Lago di Braies",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
   }
 ];
 
 export { cardTemplateSelector, popupElement, placesElement, imageFormElement
-, buttonEdit, buttonAdd, submitButtonProfile, submitButtonImage
-, profileFormConfig, imageFormConfig, initialCards, profileFormElement };
+, buttonEdit, buttonAdd, submitButtonProfile, submitButtonImage, nameInput, employmentInput
+, profileFormConfig, imageFormConfig, initialCards, profileFormElement, nameElement, employmentElement };
