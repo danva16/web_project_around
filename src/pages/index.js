@@ -39,8 +39,7 @@ const popupWithUserInfo = new PopupWithForm({
   submitCallback: () => {
     const formData = popupWithUserInfo._getInputValues();
     userInfo.setUserInfo(formData);
-    console.log(formData);
-    console.log("Hola");
+    popupWithUserInfo.close();
   }
 }
 , "#profile"
@@ -48,17 +47,18 @@ const popupWithUserInfo = new PopupWithForm({
 
 const popupWithCardInfo = new PopupWithForm({
   submitCallback: () => {
-    const formData = popupWithCardInfo._getInputValues();
+    const cardData = popupWithCardInfo._getInputValues();
     const newCardElement = new Card({
-      data: formData
+      data: cardData
       , handleCardClick: () => {
-          popupWithImage.open(formData);
+          popupWithImage.open(cardData);
       }
     }
     , cardTemplateSelector
     );
     const newCard = newCardElement.generateCard();
     initialCardList.addItem(newCard);
+    popupWithCardInfo.close()
   }
 }
 , "#image"
@@ -86,13 +86,11 @@ buttonAdd.addEventListener("click", () => {
 submitButtonProfile.addEventListener("click", (evt) => {
   evt.preventDefault();
   popupWithUserInfo._submitCallback();
-  popupWithUserInfo.close();
 });
 
 submitButtonImage.addEventListener("click", (evt) => {
   evt.preventDefault();
   popupWithCardInfo._submitCallback();
-  popupWithCardInfo.close();
 });
 
 initialCardList.rendererItems();

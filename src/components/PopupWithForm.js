@@ -49,7 +49,9 @@ class PopupWithForm extends Popup {
   _hanldeSubmitOnEnter(evt) {
     if(evt.key === "Enter") {
       evt.preventDefault();
-      console.log("Presionaste Enter");
+      if(!this._submitButton.classList.contains("button_action_create-inactive")) {
+        this._submitCallback();
+      }
     }
   }
 
