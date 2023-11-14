@@ -31,3 +31,7 @@ Este proyecto es una aplicación web que muestra perfiles de usuarios y lugares 
 - **Cerrar popups:** Los popups se pueden cerrar haciendo clic en el botón "Cerrar" o haciendo clic en el área sombreada alrededor del formulario.
 
 - **Visualizar información detallada:** Al hacer clic en una tarjeta de lugar de interés, se abre un popup con una imagen y una descripción más detallada del lugar.
+
+## Visita
+
+Puedes ver la página en funcionamiento aquí  [➡️](https://danva16.github.io/web_project_4_esp/)
