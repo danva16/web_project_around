@@ -45,7 +45,6 @@ const api = new Api({
 api.getInitialCards()
 .then(cards => {
   console.log(cards);
-  //initialCardList.items = cards;
 
   initialCardList.rendererItems(cards);
 })
@@ -54,6 +53,15 @@ api.getInitialCards()
 });
 
 const userInfo = new UserInfo({ nameSelector: ".profile__username", employmentSelector: ".profile__useremployment" });
+
+api.getUserData()
+.then(data => {
+  console.log(data);
+  userInfo.setUserInfo(data);
+})
+.catch(err => {
+  console.log(err);
+})
 
 const popupWithUserInfo = new PopupWithForm({
   submitCallback: () => {
