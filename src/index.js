@@ -8,6 +8,7 @@ import PopupWithForm from "./components/PopupWithForm.js";
 import PopupWithImage from "./components/PopupWithImage.js";
 import Section from "./components/Section.js";
 import UserInfo from "./components/UserInfo.js";
+import Api from "./components/Api.js";
 
 //importacion de constantes
 import { buttonAdd, buttonEdit, cardTemplateSelector, employmentInput, imageFormConfig, imageFormElement, initialCards, nameInput,
@@ -15,10 +16,10 @@ import { buttonAdd, buttonEdit, cardTemplateSelector, employmentInput, imageForm
   submitButtonProfile } from "./utils/constants.js";
 
 //creacion de instancias
+
 const popupWithImage = new PopupWithImage(".popup");
 
 const initialCardList = new Section({
-  items: initialCards,
   renderer: (item) => {
     const cardElement = new Card({
       data: item,
@@ -32,6 +33,25 @@ const initialCardList = new Section({
   }
 }
 , ".places");
+
+const api = new Api({
+  baseUrl: "https://around.nomoreparties.co/v1/web_es_09",
+  headers: {
+    authorization: "e0d01e4f-01c5-4081-b9ff-c482a3e73038",
+    "Content-Type": "application/json"
+  }
+});
+
+api.getInitialCards()
+.then(cards => {
+  console.log(cards);
+  //initialCardList.items = cards;
+
+  initialCardList.rendererItems(cards);
+})
+.catch(err => {
+  console.log(err);
+});
 
 const userInfo = new UserInfo({ nameSelector: ".profile__username", employmentSelector: ".profile__useremployment" });
 
@@ -92,5 +112,3 @@ submitButtonImage.addEventListener("click", (evt) => {
   evt.preventDefault();
   popupWithCardInfo._submitCallback();
 });
-
-initialCardList.rendererItems();
