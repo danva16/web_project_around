@@ -66,8 +66,16 @@ api.getUserData()
 const popupWithUserInfo = new PopupWithForm({
   submitCallback: () => {
     const formData = popupWithUserInfo._getInputValues();
-    userInfo.setUserInfo(formData);
-    popupWithUserInfo.close();
+
+    api.updateUserInfo(formData)
+    .then(updateUserData => {
+      userInfo.setUserInfo(updateUserData);
+      popupWithUserInfo.close();
+      console.log(updateUserData);
+    })
+    .catch(err => {
+      console.log(err);
+    })
   }
 }
 , "#profile"
