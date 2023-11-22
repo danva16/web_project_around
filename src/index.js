@@ -11,7 +11,7 @@ import UserInfo from "./components/UserInfo.js";
 import Api from "./components/Api.js";
 
 //importacion de constantes
-import { buttonAdd, buttonEdit, cardTemplateSelector, employmentInput, imageFormConfig, imageFormElement, initialCards, nameInput,
+import { buttonAdd, buttonEdit, cardTemplateSelector, employmentInput, imageFormConfig, imageFormElement, nameInput,
   profileFormConfig, profileFormElement, submitButtonImage,
   submitButtonProfile } from "./utils/constants.js";
 
