@@ -84,17 +84,24 @@ const popupWithUserInfo = new PopupWithForm({
 const popupWithCardInfo = new PopupWithForm({
   submitCallback: () => {
     const cardData = popupWithCardInfo._getInputValues();
-    const newCardElement = new Card({
-      data: cardData
-      , handleCardClick: () => {
-          popupWithImage.open(cardData);
-      }
-    }
-    , cardTemplateSelector
-    );
-    const newCard = newCardElement.generateCard();
-    initialCardList.addItem(newCard);
-    popupWithCardInfo.close()
+    console.log(cardData);
+
+    api.addCard(cardData)
+    .then(newCardData => {
+      const newCardElement = new Card({
+        data: newCardData,
+        handleCardClick: () => {
+          popupWithImage.open(newCardData);
+        }
+      }, cardTemplateSelector);
+
+      const newCard = newCardElement.generateCard();
+      initialCardList.addItem(newCard);
+      popupWithCardInfo.close();
+    })
+    .catch(err => {
+      console.log(err);
+    })
   }
 }
 , "#image"
