@@ -2,6 +2,7 @@ class Card {
   constructor({ data, handleCardClick }, templateSelector) {
     this._name = data.name;
     this._link = data.link;
+    this._likes = data.likes;
     this._handleCardClick = handleCardClick;
     this._templateSelector = templateSelector;
   }
@@ -34,6 +35,11 @@ class Card {
     this._setEventListeners(this._element);
 
     return this._element;
+  }
+
+  _updateLikes() {
+    const likeCountElement = this._element.querySelector(".like-elements__count");
+    likeCountElement.textContent = this._likes.length.toString();
   }
 };
 
