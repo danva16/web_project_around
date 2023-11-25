@@ -1,9 +1,11 @@
 class Card {
-  constructor({ data, handleCardClick }, templateSelector) {
+  constructor({ data, handleCardClick, handleCardDelete }, templateSelector) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
+    this._userId = data.owner._id;
     this._handleCardClick = handleCardClick;
+    this._handleCardDelete = handleCardDelete;
     this._templateSelector = templateSelector;
   }
 
@@ -18,8 +20,10 @@ class Card {
     })
 
     cardElement.querySelector(".button_action_trash").addEventListener("click", () => {
+      this._handleCardDelete();
       cardElement.remove();
     })
+
     cardElement.querySelector(".place__image").addEventListener("click", () => {
       this._handleCardClick();
     })
@@ -40,6 +44,10 @@ class Card {
   _updateLikes() {
     const likeCountElement = this._element.querySelector(".like-elements__count");
     likeCountElement.textContent = this._likes.length.toString();
+  }
+
+  isOwner(userId) {
+    return this._userId == userId;
   }
 };
 

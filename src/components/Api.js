@@ -28,6 +28,21 @@ class Api {
     })
   }
 
+  getUserId() {
+    return fetch(`${this.baseUrl}/users/me`, {
+      headers: this.headers
+    })
+    .then(res => {
+      if(res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    })
+    .then(userData => {
+      return userData._id;
+    })
+  }
+
   updateUserInfo({ name, about }) {
     return fetch(`${this.baseUrl}/users/me`, {
       method: "PATCH",

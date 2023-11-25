@@ -19,20 +19,7 @@ import { buttonAdd, buttonEdit, cardTemplateSelector, employmentInput, imageForm
 
 const popupWithImage = new PopupWithImage(".popup");
 
-const initialCardList = new Section({
-  renderer: (item) => {
-    const cardElement = new Card({
-      data: item,
-      handleCardClick: () => {
-        popupWithImage.open(item);
-      }
-    }
-    , cardTemplateSelector);
-    const card = cardElement.generateCard();
-    initialCardList.addItem(card);
-  }
-}
-, ".places");
+const userInfo = new UserInfo({ nameSelector: ".profile__username", employmentSelector: ".profile__useremployment" });
 
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/web_es_09",
@@ -41,6 +28,51 @@ const api = new Api({
     "Content-Type": "application/json"
   }
 });
+
+api.getUserData()
+.then(data => {
+  console.log(data);
+  userInfo.setUserInfo(data);
+})
+.catch(err => {
+  console.log(err);
+})
+
+const initialCardList = new Section({
+  renderer: (item) => {
+    const cardElement = new Card({
+      data: item,
+      handleCardClick: () => {
+        popupWithImage.open(item);
+      }
+      , handleCardDelete: () => {
+        //const isOwner = cardElement.isOwner(userId);
+
+        api.getUserId()
+        .then(cardId => {
+          const isOwner = cardElement._userId === cardId;
+          console.log(cardId);
+          console.log(isOwner);
+
+          if(isOwner) {
+            console.log("Todo funciona");
+          } else {
+            console.log("No funciona");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        })
+
+
+      }
+    }
+    , cardTemplateSelector);
+    const card = cardElement.generateCard();
+    initialCardList.addItem(card);
+  }
+}
+, ".places");
 
 api.getInitialCards()
 .then(cards => {
@@ -51,17 +83,6 @@ api.getInitialCards()
 .catch(err => {
   console.log(err);
 });
-
-const userInfo = new UserInfo({ nameSelector: ".profile__username", employmentSelector: ".profile__useremployment" });
-
-api.getUserData()
-.then(data => {
-  console.log(data);
-  userInfo.setUserInfo(data);
-})
-.catch(err => {
-  console.log(err);
-})
 
 const popupWithUserInfo = new PopupWithForm({
   submitCallback: () => {
