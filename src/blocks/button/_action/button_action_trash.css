@@ -8,4 +8,6 @@
   background: url('../../../images/trash__image.svg') center center no-repeat;
   background-size: cover;
   border: none;
+  opacity: 0;
+  visibility: hidden;
 }

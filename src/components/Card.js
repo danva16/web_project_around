@@ -20,7 +20,6 @@ class Card {
     })
 
     cardElement.querySelector(".button_action_trash").addEventListener("click", () => {
-      this._handleCardDelete();
       cardElement.remove();
     })
 
@@ -37,6 +36,7 @@ class Card {
     this._element.querySelector(".place__image").setAttribute("alt", this._name);
 
     this._setEventListeners(this._element);
+    this._handleCardDelete();
 
     return this._element;
   }
@@ -48,6 +48,10 @@ class Card {
 
   isOwner(userId) {
     return this._userId == userId;
+  }
+
+  toggleButtonTrash() {
+    this._element.querySelector(".button_action_trash").classList.add("button_action_trash-active");
   }
 };
 

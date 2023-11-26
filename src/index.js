@@ -46,28 +46,18 @@ const initialCardList = new Section({
         popupWithImage.open(item);
       }
       , handleCardDelete: () => {
-        //const isOwner = cardElement.isOwner(userId);
-
-        api.getUserId()
-        .then(cardId => {
-          const isOwner = cardElement._userId === cardId;
-          console.log(cardId);
-          console.log(isOwner);
-
-          if(isOwner) {
-            console.log("Todo funciona");
-          } else {
-            console.log("No funciona");
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        })
-
-
+        console.log("Añadidas");
       }
     }
     , cardTemplateSelector);
+    api.getUserId()
+    .then(cardId => {
+      const isOwner = cardElement._userId === cardId;
+
+      if(isOwner) {
+        cardElement.toggleButtonTrash();
+      }
+    })
     const card = cardElement.generateCard();
     initialCardList.addItem(card);
   }
@@ -113,6 +103,9 @@ const popupWithCardInfo = new PopupWithForm({
         data: newCardData,
         handleCardClick: () => {
           popupWithImage.open(newCardData);
+        }
+        , handleCardDelete: () => {
+          console.log("Espera...");
         }
       }, cardTemplateSelector);
 
