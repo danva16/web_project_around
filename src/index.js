@@ -108,7 +108,14 @@ const popupWithCardInfo = new PopupWithForm({
           console.log("Espera...");
         }
       }, cardTemplateSelector);
+      api.getUserId()
+      .then(userId => {
+        const isOwner = newCardElement._userId === userId;
 
+        if(isOwner) {
+          newCardElement.toggleButtonTrash();
+        }
+      })
       const newCard = newCardElement.generateCard();
       initialCardList.addItem(newCard);
       popupWithCardInfo.close();
