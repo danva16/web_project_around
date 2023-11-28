@@ -6,6 +6,7 @@ import Card from "./components/Card.js";
 import FormValidator from "./components/FormValidator.js";
 import PopupWithForm from "./components/PopupWithForm.js";
 import PopupWithImage from "./components/PopupWithImage.js";
+import PopupOfConfirmation from "./components/PopupOfConfirmation.js";
 import Section from "./components/Section.js";
 import UserInfo from "./components/UserInfo.js";
 import Api from "./components/Api.js";
@@ -13,7 +14,7 @@ import Api from "./components/Api.js";
 //importacion de constantes
 import { buttonAdd, buttonEdit, cardTemplateSelector, employmentInput, imageFormConfig, imageFormElement, nameInput,
   profileFormConfig, profileFormElement, submitButtonImage,
-  submitButtonProfile } from "./utils/constants.js";
+  submitButtonProfile, confirmationElement } from "./utils/constants.js";
 
 //creacion de instancias
 
@@ -45,8 +46,23 @@ const initialCardList = new Section({
       handleCardClick: () => {
         popupWithImage.open(item);
       }
-      , handleCardDelete: () => {
-        console.log("Añadidas");
+      , handleDeleteClick: () => {
+        const popupOfConfirmation = new PopupOfConfirmation({
+          handleCardDelete: () => {
+            const dataId = cardElement._cardId.toString();
+            api.deleteCard(dataId)
+            .then(data => {
+              console.log(data);
+            })
+            .catch(err => {
+              console.log(err);
+            })
+            cardElement.updateCard();
+            popupOfConfirmation.close();
+          }
+        }
+        , "#confirmation")
+        popupOfConfirmation.open();
       }
     }
     , cardTemplateSelector);
@@ -89,8 +105,7 @@ const popupWithUserInfo = new PopupWithForm({
     })
   }
 }
-, "#profile"
-);
+, "#profile");
 
 const popupWithCardInfo = new PopupWithForm({
   submitCallback: () => {
@@ -104,8 +119,22 @@ const popupWithCardInfo = new PopupWithForm({
         handleCardClick: () => {
           popupWithImage.open(newCardData);
         }
-        , handleCardDelete: () => {
-          console.log("Espera...");
+        , handleDeleteClick: () => {
+          const popupOfConfirmation = new PopupOfConfirmation({
+            handleCardDelete: () => {
+              const dataId = newCardElement._cardId.toString();
+              api.deleteCard(dataId)
+              .then(data => {
+                console.log(data);
+              })
+              .catch(err => {
+                console.log(err);
+              })
+              newCardElement.updateCard();
+              popupOfConfirmation.close();
+            }
+          }
+          , "#confirmation")
         }
       }, cardTemplateSelector);
       api.getUserId()
@@ -125,8 +154,7 @@ const popupWithCardInfo = new PopupWithForm({
     })
   }
 }
-, "#image"
-);
+, "#image");
 
 const profileFormValidator = new FormValidator(profileFormConfig, profileFormElement);
 

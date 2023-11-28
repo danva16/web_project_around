@@ -1,11 +1,12 @@
 class Card {
-  constructor({ data, handleCardClick, handleCardDelete }, templateSelector) {
+  constructor({ data, handleCardClick, handleDeleteClick }, templateSelector) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
     this._userId = data.owner._id;
+    this._cardId = data._id;
     this._handleCardClick = handleCardClick;
-    this._handleCardDelete = handleCardDelete;
+    this._handleDeleteClick = handleDeleteClick;
     this._templateSelector = templateSelector;
   }
 
@@ -20,7 +21,7 @@ class Card {
     })
 
     cardElement.querySelector(".button_action_trash").addEventListener("click", () => {
-      cardElement.remove();
+      this._handleDeleteClick();
     })
 
     cardElement.querySelector(".place__image").addEventListener("click", () => {
@@ -36,7 +37,6 @@ class Card {
     this._element.querySelector(".place__image").setAttribute("alt", this._name);
 
     this._setEventListeners(this._element);
-    this._handleCardDelete();
 
     return this._element;
   }
@@ -46,12 +46,12 @@ class Card {
     likeCountElement.textContent = this._likes.length.toString();
   }
 
-  isOwner(userId) {
-    return this._userId == userId;
-  }
-
   toggleButtonTrash() {
     this._element.querySelector(".button_action_trash").classList.add("button_action_trash-active");
+  }
+
+  updateCard() {
+    this._element.remove();
   }
 };
 

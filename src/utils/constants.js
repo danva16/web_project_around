@@ -1,6 +1,7 @@
 const cardTemplateSelector = "#place-template";
 const profileFormElement = document.querySelector("#profile");
 const imageFormElement = document.querySelector("#image");
+const confirmationElement = document.querySelector("#confirmation");
 const nameInput = document.querySelector("#name-input");
 const employmentInput = document.querySelector("#employment-input");
 const buttonEdit = document.querySelector(".button_action_edit");
@@ -27,4 +28,4 @@ const imageFormConfig = {
 };
 
 export { cardTemplateSelector, imageFormElement , buttonEdit, buttonAdd, submitButtonProfile,
-submitButtonImage, nameInput, employmentInput , profileFormConfig, imageFormConfig, profileFormElement };
+submitButtonImage, nameInput, employmentInput , profileFormConfig, imageFormConfig, profileFormElement, confirmationElement };

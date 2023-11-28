@@ -29,7 +29,7 @@ class PopupWithForm extends Popup {
 
   open() {
     super.open();
-    this.setEventListeners();
+    this._setEventListeners();
     this._popup.classList.add("form__set_mode_active");
   }
 
@@ -54,8 +54,8 @@ class PopupWithForm extends Popup {
     }
   }
 
-  setEventListeners() {
-    super.setEventListeners();
+  _setEventListeners() {
+    super._setEventListeners();
     this._popup.addEventListener("submit", this._handlerSubmit);
     document.addEventListener("keydown", this._handlerSubmitOnEnter);
   }

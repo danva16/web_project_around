@@ -8,7 +8,7 @@ class Popup {
 
   open() {
     this._form.classList.add("form_mode_active");
-    this.setEventListeners();
+    this._setEventListeners();
   }
 
   close() {
@@ -33,7 +33,7 @@ class Popup {
     this._form.removeEventListener("click", this._handlerSupClose);
   }
 
-  setEventListeners() {
+  _setEventListeners() {
     this._popup.querySelector(".button_action_close").addEventListener("click", () => {
       this.close();
     })
