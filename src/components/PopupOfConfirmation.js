@@ -8,13 +8,13 @@ class PopupOfConfirmation extends Popup {
 
   open() {
     super.open();
-    this._popup.classList.add("form__set_mode_active");
+    this._popup.classList.add("popup_mode_active");
     this._setEventListeners();
   }
 
   close() {
     super.close();
-    this._popup.classList.remove("form__set_mode_active");
+    this._popup.classList.remove("popup_mode_active");
     this._removeListeners();
   }
 

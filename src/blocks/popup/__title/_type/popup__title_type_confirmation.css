@@ -1,0 +1,8 @@
+.popup__title_type_confirmation {
+  width: 100%;
+  margin: 0 auto;
+  font-weight: 900;
+  line-height: 1.21;
+  position: initial;
+  color: black;
+}
