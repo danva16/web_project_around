@@ -9,18 +9,21 @@ import PopupWithImage from "./components/PopupWithImage.js";
 import PopupOfConfirmation from "./components/PopupOfConfirmation.js";
 import Section from "./components/Section.js";
 import UserInfo from "./components/UserInfo.js";
+import AvatarInfo from "./components/AvatarInfo.js";
 import Api from "./components/Api.js";
 
 //importacion de constantes
-import { buttonAdd, buttonEdit, cardTemplateSelector, employmentInput, imageFormConfig, imageFormElement, nameInput,
+import { buttonAdd, buttonEdit, buttonUpdate, cardTemplateSelector, employmentInput, imageFormConfig, imageFormElement, nameInput,
   profileFormConfig, profileFormElement, submitButtonImage,
-  submitButtonProfile, confirmationElement } from "./utils/constants.js";
+  submitButtonProfile, avatarFormConfig, avatarFormElement, submitButtonAvatar } from "./utils/constants.js";
 
 //creacion de instancias
 
 const popupWithImage = new PopupWithImage(".popup");
 
 const userInfo = new UserInfo({ nameSelector: ".profile__username", employmentSelector: ".profile__useremployment" });
+
+const avatarInfo = new AvatarInfo({ avatarSelector: ".profile__image" });
 
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/web_es_09",
@@ -34,6 +37,7 @@ api.getUserData()
 .then(data => {
   console.log(data);
   userInfo.setUserInfo(data);
+  avatarInfo.updateAvatarInfo(data.avatar);
 })
 .catch(err => {
   console.log(err);
@@ -213,9 +217,26 @@ const popupWithCardInfo = new PopupWithForm({
 }
 , "#image");
 
+const popupWithAvatarInfo = new PopupWithForm({
+  submitCallback: () => {
+    const avatarData = popupWithAvatarInfo._getInputValues();
+
+    api.updateProfilePhoto(avatarData)
+    .then(data => {
+      avatarInfo.updateAvatarInfo(data);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+}
+, "#avatar");
+
 const profileFormValidator = new FormValidator(profileFormConfig, profileFormElement);
 
 const imageFormValidator = new FormValidator(imageFormConfig, imageFormElement);
+
+const avatarFormValidator = new FormValidator(avatarFormConfig, avatarFormElement);
 
 //controladores de eventos para abrir popups
 buttonEdit.addEventListener("click", () => {
@@ -231,6 +252,11 @@ buttonAdd.addEventListener("click", () => {
   imageFormValidator.enableValidation();
 });
 
+buttonUpdate.addEventListener("click", () => {
+  popupWithAvatarInfo.open();
+  avatarFormValidator.enableValidation();
+})
+
 //controladores para botones submit
 submitButtonProfile.addEventListener("click", (evt) => {
   evt.preventDefault();
@@ -241,3 +267,8 @@ submitButtonImage.addEventListener("click", (evt) => {
   evt.preventDefault();
   popupWithCardInfo._submitCallback();
 });
+
+submitButtonAvatar.addEventListener("click", (evt) => {
+  evt.preventDefault();
+  popupWithAvatarInfo._submitCallback();
+})

@@ -17,7 +17,7 @@
 
       <main class="content">
         <section class="profile">
-          <img class="profile__image" src="<%= require('./images/jimmyChin__image.jpg')%>" alt="Imagen de perfil del retrato de Jacques Cousteau">
+          <img class="profile__image" src="#" alt="Imagen de perfil del retrato de usuario">
           <div class="profile__photo-overlay">
             <button type="button" class="button button_type_photo"></button>
           </div>
@@ -83,6 +83,16 @@
           <span class="form__input-error image-input-error"></span>
         </div>
         <button id="submit-image" type="submit" class="button button_action_create">Crear</button>
+      </fieldset>
+
+      <fieldset id="avatar" class="form__set form__set_type_avatar">
+        <button type="button" class="button button_action_close"></button>
+        <h2 class="form__title">Cambiar foto de perfil</h2>
+        <div class="form__inputs">
+          <input type="url" placeholder="Inserta imagen" id="avatar-input" name="avatar" class="form__input" required>
+          <span class="form__input-error avatar-input-error"></span>
+        </div>
+        <button id="submit-avatar" type="submit" class="button button_action_create">Guardar</button>
       </fieldset>
     </form>
 
