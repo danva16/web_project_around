@@ -49,6 +49,11 @@ class PopupWithForm extends Popup {
     if(evt.key === "Enter") {
       evt.preventDefault();
       if(!this._submitButton.classList.contains("button_action_create-inactive")) {
+        if(this._submitButton.textContent === "Guardar") {
+          this._submitButton.textContent = "Guardando...";
+        } else if(this._submitButton.textContent === "Crear") {
+          this._submitButton.textContent = "Creando...";
+        }
         this._submitCallback();
       }
     }

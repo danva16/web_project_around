@@ -35,7 +35,6 @@ const api = new Api({
 
 api.getUserData()
 .then(data => {
-  console.log(data);
   userInfo.setUserInfo(data);
   avatarInfo.updateAvatarInfo(data.avatar);
 })
@@ -76,8 +75,6 @@ const initialCardList = new Section({
           api.unlikeCard(cardId)
           .then(updatedCard => {
             cardElement.updateLikes(updatedCard.likes);
-            console.log(updatedCard.likes);
-            console.log(cardId);
           })
           .catch(err => {
             console.log(err);
@@ -86,8 +83,6 @@ const initialCardList = new Section({
           api.likeCard(cardId)
           .then(updatedCard => {
             cardElement.updateLikes(updatedCard.likes);
-            console.log(updatedCard.likes);
-            console.log(cardId);
           })
           .catch(err => {
             console.log(err);
@@ -117,8 +112,6 @@ const initialCardList = new Section({
 
 api.getInitialCards()
 .then(cards => {
-  console.log(cards);
-
   initialCardList.rendererItems(cards);
 })
 .catch(err => {
@@ -133,7 +126,7 @@ const popupWithUserInfo = new PopupWithForm({
     .then(updateUserData => {
       userInfo.setUserInfo(updateUserData);
       popupWithUserInfo.close();
-      console.log(updateUserData);
+      submitButtonProfile.textContent = "Guardar"
     })
     .catch(err => {
       console.log(err);
@@ -145,7 +138,6 @@ const popupWithUserInfo = new PopupWithForm({
 const popupWithCardInfo = new PopupWithForm({
   submitCallback: () => {
     const cardData = popupWithCardInfo._getInputValues();
-    console.log(cardData);
 
     api.addCard(cardData)
     .then(newCardData => {
@@ -179,8 +171,6 @@ const popupWithCardInfo = new PopupWithForm({
           api.unlikeCard(cardId)
           .then(updatedCard => {
             newCardElement.updateLikes(updatedCard.likes);
-            console.log(updatedCard.likes);
-            console.log(cardId);
           })
           .catch(err => {
             console.log(err);
@@ -189,8 +179,6 @@ const popupWithCardInfo = new PopupWithForm({
           api.likeCard(cardId)
           .then(updatedCard => {
             newCardElement.updateLikes(updatedCard.likes);
-            console.log(updatedCard);
-            console.log(cardId);
           })
           .catch(err => {
             console.log(err);
@@ -209,6 +197,7 @@ const popupWithCardInfo = new PopupWithForm({
       const newCard = newCardElement.generateCard();
       initialCardList.addItem(newCard);
       popupWithCardInfo.close();
+      submitButtonImage.textContent = "Crear";
     })
     .catch(err => {
       console.log(err);
@@ -224,6 +213,8 @@ const popupWithAvatarInfo = new PopupWithForm({
     api.updateProfilePhoto(avatarData)
     .then(data => {
       avatarInfo.updateAvatarInfo(data);
+      popupWithAvatarInfo.close();
+      submitButtonAvatar.textContent = "Guardar";
     })
     .catch(err => {
       console.log(err);
@@ -260,15 +251,18 @@ buttonUpdate.addEventListener("click", () => {
 //controladores para botones submit
 submitButtonProfile.addEventListener("click", (evt) => {
   evt.preventDefault();
+  submitButtonProfile.textContent = "Guardando...";
   popupWithUserInfo._submitCallback();
 });
 
 submitButtonImage.addEventListener("click", (evt) => {
   evt.preventDefault();
+  submitButtonImage.textContent = "Creando...";
   popupWithCardInfo._submitCallback();
 });
 
 submitButtonAvatar.addEventListener("click", (evt) => {
   evt.preventDefault();
+  submitButtonAvatar.textContent = "Guardando...";
   popupWithAvatarInfo._submitCallback();
 })
