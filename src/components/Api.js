@@ -109,6 +109,20 @@ class Api {
       return Promise.reject(`Error: ${res.status}`);
     })
   }
+
+  updateProfilePhoto(newAvatar) {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this.headers,
+      body: JSON.stringify(newAvatar)
+    })
+    .then(res => {
+      if(res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    })
+  }
 }
 
 export default Api;
