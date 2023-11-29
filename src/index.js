@@ -64,6 +64,32 @@ const initialCardList = new Section({
         , "#confirmation")
         popupOfConfirmation.open();
       }
+      , handleLike: () => {
+        const isLiked = cardElement.isLiked();
+        const cardId = cardElement._cardId.toString();
+
+        if(isLiked) {
+          api.unlikeCard(cardId)
+          .then(updatedCard => {
+            cardElement.updateLikes(updatedCard.likes);
+            console.log(updatedCard.likes);
+            console.log(cardId);
+          })
+          .catch(err => {
+            console.log(err);
+          })
+        } else {
+          api.likeCard(cardId)
+          .then(updatedCard => {
+            cardElement.updateLikes(updatedCard.likes);
+            console.log(updatedCard.likes);
+            console.log(cardId);
+          })
+          .catch(err => {
+            console.log(err);
+          })
+        }
+      }
     }
     , cardTemplateSelector);
     api.getUserId()
@@ -135,6 +161,32 @@ const popupWithCardInfo = new PopupWithForm({
             }
           }
           , "#confirmation")
+        }
+        , handleLike: () => {
+          const isLiked = newCardElement.isLiked();
+        const cardId = newCardElement._cardId.toString();
+
+        if(isLiked) {
+          api.unlikeCard(cardId)
+          .then(updatedCard => {
+            newCardElement.updateLikes(updatedCard.likes);
+            console.log(updatedCard.likes);
+            console.log(cardId);
+          })
+          .catch(err => {
+            console.log(err);
+          })
+        } else {
+          api.likeCard(cardId)
+          .then(updatedCard => {
+            newCardElement.updateLikes(updatedCard.likes);
+            console.log(updatedCard);
+            console.log(cardId);
+          })
+          .catch(err => {
+            console.log(err);
+          })
+        }
         }
       }, cardTemplateSelector);
       api.getUserId()

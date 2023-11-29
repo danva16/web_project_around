@@ -1,5 +1,5 @@
 class Card {
-  constructor({ data, handleCardClick, handleDeleteClick }, templateSelector) {
+  constructor({ data, handleCardClick, handleDeleteClick, handleLike }, templateSelector) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
@@ -7,6 +7,7 @@ class Card {
     this._cardId = data._id;
     this._handleCardClick = handleCardClick;
     this._handleDeleteClick = handleDeleteClick;
+    this._handleLike = handleLike;
     this._templateSelector = templateSelector;
   }
 
@@ -18,6 +19,7 @@ class Card {
   _setEventListeners(cardElement) {
     cardElement.querySelector(".button_action_like").addEventListener("click", (evt) => {
       evt.target.classList.toggle("button_action_like--active");
+      this._handleLike();
     })
 
     cardElement.querySelector(".button_action_trash").addEventListener("click", () => {
@@ -37,13 +39,14 @@ class Card {
     this._element.querySelector(".place__image").setAttribute("alt", this._name);
 
     this._setEventListeners(this._element);
+    this.updateLikes(this._likes);
 
     return this._element;
   }
 
-  _updateLikes() {
+  updateLikes(likes) {
     const likeCountElement = this._element.querySelector(".like-elements__count");
-    likeCountElement.textContent = this._likes.length.toString();
+    likeCountElement.textContent = likes.length.toString();
   }
 
   toggleButtonTrash() {
@@ -52,6 +55,14 @@ class Card {
 
   updateCard() {
     this._element.remove();
+  }
+
+  isLiked() {
+    if(this._element.querySelector(".button_action_like").classList.contains("button_action_like--active")) {
+      return false;
+    } else {
+      return true;
+    }
   }
 };
 
