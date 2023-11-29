@@ -64,6 +64,10 @@ class Card {
       return true;
     }
   }
+
+  checkedUserLiked(userId) {
+    return this._likes.some(user => user._id === userId);
+  }
 };
 
 export default Card;

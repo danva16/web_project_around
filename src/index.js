@@ -99,6 +99,11 @@ const initialCardList = new Section({
       if(isOwner) {
         cardElement.toggleButtonTrash();
       }
+
+      const userLiked = cardElement.checkedUserLiked(cardId);
+      if(userLiked) {
+        cardElement._element.querySelector(".button_action_like").classList.add("button_action_like--active");
+      }
     })
     const card = cardElement.generateCard();
     initialCardList.addItem(card);
