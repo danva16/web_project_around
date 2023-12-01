@@ -151,9 +151,6 @@ const popupWithCardInfo = new PopupWithForm({
             handleCardDelete: () => {
               const dataId = newCardElement._cardId.toString();
               api.deleteCard(dataId)
-              .then(data => {
-                console.log(data);
-              })
               .catch(err => {
                 console.log(err);
               })
