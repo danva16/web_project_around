@@ -1,21 +1,21 @@
 //importacion de css
-import "./pages/index.css";
+import "../page/index.css";
 
 //importacion de clases
-import Card from "./components/Card.js";
-import FormValidator from "./components/FormValidator.js";
-import PopupWithForm from "./components/PopupWithForm.js";
-import PopupWithImage from "./components/PopupWithImage.js";
-import PopupOfConfirmation from "./components/PopupOfConfirmation.js";
-import Section from "./components/Section.js";
-import UserInfo from "./components/UserInfo.js";
-import AvatarInfo from "./components/AvatarInfo.js";
-import Api from "./components/Api.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupOfConfirmation from "../components/PopupOfConfirmation.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import AvatarInfo from "../components/AvatarInfo.js";
+import Api from "../components/Api.js";
 
 //importacion de constantes
 import { buttonAdd, buttonEdit, buttonUpdate, cardTemplateSelector, employmentInput, imageFormConfig, imageFormElement, nameInput,
   profileFormConfig, profileFormElement, submitButtonImage,
-  submitButtonProfile, avatarFormConfig, avatarFormElement, submitButtonAvatar } from "./utils/constants.js";
+  submitButtonProfile, avatarFormConfig, avatarFormElement, submitButtonAvatar } from "../utils/constants.js";
 
 //creacion de instancias
 
