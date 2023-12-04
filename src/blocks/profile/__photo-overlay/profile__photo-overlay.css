@@ -13,3 +13,10 @@
 .profile__photo-overlay:hover {
   opacity: 1;
 }
+
+@media screen and (max-width: 750px) {
+  .profile__photo-overlay {
+    left: 50%;
+    transform: translate(-50%);
+  }
+}
